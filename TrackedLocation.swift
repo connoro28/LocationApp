@@ -1,12 +1,6 @@
-//
-//  TrackedLocation.swift
-//  LocationTracker
-//
-//  Created by Opdyke, Connor L. on 7/15/25.
-//
 import Foundation
 import FirebaseFirestore
-import FirebaseFirestoreSwift // Import this to use @DocumentID
+import FirebaseFirestoreSwift
 import CoreLocation
 
 struct TrackedLocation: Identifiable, Codable {
@@ -18,7 +12,6 @@ struct TrackedLocation: Identifiable, Codable {
     var longitude: Double
     var userID: String
     
-    // We make this optional because it might not exist on old documents.
     var timestamp: Timestamp?
     
     // A computed property to easily get a CLLocationCoordinate2D
