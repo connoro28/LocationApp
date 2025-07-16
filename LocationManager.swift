@@ -1,9 +1,3 @@
-//
-//  LocationManager.swift
-//  LocationTracker
-//
-//  Created by Opdyke, Connor L. on 7/15/25.
-//
 import Foundation
 import CoreLocation // The framework for all location services
 import Combine // Used for the @Published property
@@ -48,8 +42,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     // This delegate method is called whenever a new location update is received.
     // Add this import to get access to UIDevice
 
-    // ... inside the LocationManager class ...
-
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         lastKnownLocation = locations.last
         
@@ -69,7 +61,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             "latitude": location.coordinate.latitude,
             "longitude": location.coordinate.longitude,
             "timestamp": FieldValue.serverTimestamp(),
-            "userID": userID // Add this line
+            "userID": userID
         ]
         
         db.collection("locations").addDocument(data: locationData) { error in
